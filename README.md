@@ -13,7 +13,12 @@ audio/
 
 The page has two states, and the diya is the gate between them.
 
-**Unlit** — near-black screen, one brass lamp, three lines of text.
+**Unlit** — reads top to bottom: "Happy Deepavali", then "Tap the diya to
+begin", then a large lamp, then an explicit `Light the Diya` button. The
+lamp's tap target is the full ~290px circle (padding, not just artwork),
+with expanding rings, a resting glow and a small animated hand to signal
+it. The lamp and the button call the same `light()` function.
+
 The rest of the page exists in the DOM but the document is scroll-locked
 (`html.sealed`) and hidden from screen readers, so there is nothing to
 scroll past and nothing to skim ahead to.
