@@ -267,36 +267,6 @@ html.lit .halo{opacity:1;transform:scale(1)}
 }
 html.lit .tap-hand{opacity:0;animation:none;transition:opacity .35s}
 
-/* --- the explicit button, for anyone who wants a button --- */
-.cta-slot{
-  margin-top:2rem;
-  min-height:56px;
-  display:flex;align-items:center;justify-content:center;
-  width:100%;
-}
-.light-cta{
-  min-height:56px;
-  padding:1rem 2.1rem;
-  border:1px solid rgba(240,169,79,.45);
-  border-radius:999px;
-  background:rgba(240,169,79,.11);
-  color:var(--cream);
-  font-size:1rem;letter-spacing:.055em;
-  display:inline-flex;align-items:center;gap:.55rem;
-  touch-action:manipulation;
-  -webkit-tap-highlight-color:transparent;
-  opacity:0;
-  animation:up 1s var(--ease) .9s forwards,ctaGlow 3.6s ease-in-out 2s infinite;
-  transition:transform .2s var(--ease);
-}
-.light-cta:active{transform:scale(.97)}
-@media(hover:hover){.light-cta:hover{background:rgba(240,169,79,.19)}}
-@keyframes ctaGlow{
-  0%,100%{box-shadow:0 0 0 0 rgba(240,169,79,0)}
-  50%{box-shadow:0 0 22px 2px rgba(240,169,79,.22)}
-}
-html.lit .light-cta{opacity:0;pointer-events:none;animation:none;transition:opacity .5s var(--ease)}
-
 /* scroll cue, only once lit */
 .cue{
   position:absolute;left:50%;bottom:calc(var(--sb) + 1.4rem);
@@ -314,7 +284,6 @@ html.lit .cue{opacity:1}
 @media(max-height:700px){
   #stage{padding-top:calc(var(--st) + 1.3rem);padding-bottom:calc(var(--sb) + 3.2rem)}
   .lamp-wrap{width:min(62vw,224px);margin-top:1.4rem}
-  .cta-slot{margin-top:1.4rem}
   .stage-title,.greet-title{font-size:clamp(1.55rem,6.8vw,1.95rem)}
   .stage-instruct{margin-top:.7rem;font-size:.96rem}
 }
@@ -626,10 +595,6 @@ html{scroll-behavior:smooth}
       </svg>
     </div>
 
-    <div class="cta-slot">
-      <button class="light-cta" id="light-cta" type="button">🪔 Light the Diya</button>
-    </div>
-
     <div class="cue" aria-hidden="true"><span>SCROLL</span><span></span></div>
   </main>
 
@@ -748,7 +713,6 @@ html{scroll-behavior:smooth}
   var root  = document.documentElement;
   var calm  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var lamp  = document.getElementById('lamp');
-  var cta   = document.getElementById('light-cta');
   var track = document.getElementById('track');
   var music = document.getElementById('music');
   var label = document.getElementById('music-label');
@@ -875,7 +839,6 @@ html{scroll-behavior:smooth}
     root.classList.add('lit');
     lamp.setAttribute('aria-label', 'The diya is lit');
     lamp.disabled = true;
-    if(cta) cta.disabled = true;
 
     chime();
     startMusic();
@@ -889,9 +852,8 @@ html{scroll-behavior:smooth}
     }, calm ? 200 : 2200);
   }
 
-  /* the lamp and the button are two doors into the same moment */
+  /* the lamp is the only door into this moment */
   lamp.addEventListener('click', light);
-  if(cta) cta.addEventListener('click', light);
 
   /* ---------------------------------------------------------
      Share — native sheet where available, copy link otherwise
