@@ -1,35 +1,68 @@
-# Vaiga Sweets & Snacks — Deepavali QR Microsite
+# Vaiga Sweets & Snacks — Deepavali Greeting
 
-A one-page, mobile-first Deepavali greeting for people who scan the QR code
-on the sweet box. Static site, no build step, no backend.
-
-## Structure
+A digital greeting card for people who scan the QR code on the sweet box.
+Static site. No build step, no framework, no backend.
 
 ```
-index.html          the entire site (HTML/CSS/JS in one file)
+index.html              the whole experience
 audio/
-  deepavali-music.mp3   background music, looped, muted by default
+  deepavali-music.mp3   starts only when the diya is tapped
 ```
+
+## How the experience is structured
+
+The page has two states, and the diya is the gate between them.
+
+**Unlit** — near-black screen, one brass lamp, three lines of text.
+The rest of the page exists in the DOM but the document is scroll-locked
+(`html.sealed`) and hidden from screen readers, so there is nothing to
+scroll past and nothing to skim ahead to.
+
+**Lit** — the tap triggers, in one moment: flame ignition, a halo
+expanding outward, the background warming from near-black to burgundy and
+amber, slow light rays, floating motes, a soft synthesised chime, and
+`audio.play()`. Roughly 1.5s later the greeting fades into the same slot
+the invitation occupied, then the scroll unlocks and a cue appears.
+
+The flame stays the light source for everything below it — the fixed warm
+gradient is anchored to where the lamp was.
+
+## Audio behaviour
+
+Nothing loads or plays on page load (`preload="none"`, no autoplay).
+`audio.play()` is called from inside the tap handler, which is the gesture
+mobile browsers require. Volume fades 0 → 0.42 over about 2 seconds.
+
+If playback is blocked, the control still appears so the visitor can start
+it themselves. If the file is missing entirely, the control never appears
+at all — no dead button, no error shown.
+
+## Swapping the music
+
+Replace `audio/deepavali-music.mp3` with a file of the same name, or edit
+the `<source src="...">` near the top of `<body>`. A soft santoor / flute /
+light tabla instrumental suits the piece best; make sure you hold the
+rights for commercial use.
+
+## Already configured
+
+- Address: Lekshmi Nivas, T D Nagar 1, Kollam
+- Phone: 70125 25750 (tap to call)
+- Google Maps: https://maps.app.goo.gl/fLZevv5v9UzZQucq6
 
 ## Deploy on Vercel
 
-1. Push this folder to a GitHub repo (commit `index.html` and `audio/` as-is).
-2. In Vercel, "Add New Project" → import that repo.
-3. Framework preset: **Other** (it's a static site — no build command,
-   no output directory needed; Vercel will serve `index.html` at the root).
-4. Deploy. The QR code should point at the resulting `https://your-project.vercel.app` URL
-   (or a custom domain if you attach one).
+1. Push this folder to a GitHub repo.
+2. Vercel → Add New Project → import the repo.
+3. Framework preset: **Other**. No build command, no output directory.
+4. Deploy, then point the QR code at the resulting URL.
 
-## Already filled in
+## Notes
 
-- Address: Lekshmi Nivas, T D Nagar 1, Kollam
-- Phone: 70125 25750 (tap-to-call)
-- Google Maps link
-- Background music: `audio/deepavali-music.mp3`
-
-## If you ever want to swap the music
-
-Replace `audio/deepavali-music.mp3` with a new file of the same name (or
-update the `<source src="...">` path in `index.html`, around the top of the
-`<body>`). The music button hides itself automatically if the file is
-missing or fails to load, so nothing breaks either way.
+- Mobile-first; tested layout from 360px up. No horizontal scroll.
+- `prefers-reduced-motion` drops motes, rays and flicker, and unseals
+  the page immediately on tap.
+- The lamp is a real `<button>` with an aria-label, so it works from the
+  keyboard. Music control exposes `aria-pressed`.
+- The warm palette is deliberately fixed — a system light-mode setting
+  will not turn the card into a white page.

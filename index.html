@@ -1,880 +1,762 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="is-dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Happy Deepavali | Vaiga Sweets &amp; Snacks</title>
 <meta name="description" content="A special Deepavali greeting from Vaiga Sweets & Snacks.">
+<meta name="theme-color" content="#120608">
 
-<!-- Open Graph -->
 <meta property="og:title" content="Happy Deepavali | Vaiga Sweets & Snacks">
 <meta property="og:description" content="A special Deepavali greeting from Vaiga Sweets & Snacks.">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 
-<!-- Favicon: a simple diya, inline, no external file needed -->
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext x='50%25' y='58%25' font-size='48' text-anchor='middle' dominant-baseline='middle'%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ctext y='54' font-size='54'%3E%F0%9F%AA%94%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-  /* ============================================================
-     TOKENS
-     This experience keeps one deliberate warm, low-lit palette
-     regardless of the visitor's system light/dark setting — the
-     brief calls for a specific festive mood, not a utility UI.
-     ============================================================ */
-  :root {
-    --maroon-950: #23090f;
-    --maroon-900: #33101a;
-    --maroon-800: #4a1720;
-    --brown-900: #2c1c14;
-    --cream-100: #f6ecd9;
-    --cream-200: #efe1c6;
-    --amber-400: #e3a75a;
-    --gold-500: #c99a4d;
-    --gold-300: #e8caa0;
+/* ==========================================================
+   VAIGA · DEEPAVALI
+   Two states: unlit (near-black, one diya) and lit (the whole
+   page warms from that single flame). Everything below the
+   fold stays sealed until the visitor lights the lamp.
+   ========================================================== */
 
-    --bg: var(--maroon-950);
-    --bg-panel: var(--maroon-900);
-    --ink: var(--cream-100);
-    --ink-soft: var(--cream-200);
-    --accent: var(--gold-500);
-    --accent-soft: var(--amber-400);
-    --hairline: rgba(232, 202, 160, 0.16);
+:root{
+  --void:#120608;
+  --void-2:#1c0a0d;
+  --burgundy:#3d1119;
+  --brown:#241310;
+  --cream:#f7ecd8;
+  --cream-dim:rgba(247,236,216,.62);
+  --cream-faint:rgba(247,236,216,.34);
+  --amber:#f0a94f;
+  --amber-deep:#c9752a;
+  --gold:#c9a05a;
+  --gold-pale:#e6cc9b;
+  --rule:rgba(230,204,155,.15);
 
-    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-    --font-body: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --display:'Marcellus',Georgia,serif;
+  --body:'Jost',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 
-    --safe-t: env(safe-area-inset-top, 0px);
-    --safe-b: env(safe-area-inset-bottom, 0px);
-    color-scheme: dark;
-  }
+  --st:env(safe-area-inset-top,0px);
+  --sb:env(safe-area-inset-bottom,0px);
 
-  /* Same warm palette on light or dark system setting, by design */
-  @media (prefers-color-scheme: light) {
-    :root:not([data-theme="light"]) {
-      --bg: var(--maroon-950);
-      --bg-panel: var(--maroon-900);
-      --ink: var(--cream-100);
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: var(--maroon-950);
-    --bg-panel: var(--maroon-900);
-    --ink: var(--cream-100);
-  }
+  --ease:cubic-bezier(.22,.61,.36,1);
+  color-scheme:dark;
+}
 
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    scroll-padding-top: var(--safe-t);
-  }
-  html { -webkit-text-size-adjust: 100%; }
+/* The mood is fixed by design — the viewer's light/dark setting
+   shouldn't turn a candlelit greeting card into a white page. */
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="light"]){ --void:#120608; --cream:#f7ecd8; }
+}
+:root[data-theme="dark"]{ --void:#120608; --cream:#f7ecd8; }
 
-  body {
-    font-family: var(--font-body);
-    color: var(--ink);
-    background:
-      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(227,167,90,0.10), transparent 60%),
-      var(--bg);
-    line-height: 1.6;
-    padding-top: var(--safe-t);
-    padding-bottom: var(--safe-b);
-    overflow-x: hidden;
-  }
+*,*::before,*::after{box-sizing:border-box}
 
-  .wrap {
-    max-width: 480px;
-    margin: 0 auto;
-    position: relative;
-  }
+html,body{margin:0;padding:0;height:100%}
+html{scroll-padding-top:var(--st);-webkit-text-size-adjust:100%}
 
-  @media (min-width: 560px) {
-    body {
-      background:
-        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(227,167,90,0.10), transparent 60%),
-        var(--bg);
-    }
-    .wrap {
-      box-shadow: 0 0 80px rgba(0,0,0,0.45);
-    }
-  }
+body{
+  font-family:var(--body);
+  font-weight:300;
+  color:var(--cream);
+  background:var(--void);
+  line-height:1.62;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
-  h1, h2, h3 { font-family: var(--font-display); font-weight: 450; margin: 0; }
+/* sealed until the diya is lit */
+html.sealed,html.sealed body{overflow:hidden;height:100%}
 
-  section {
-    position: relative;
-    padding: 4.5rem 1.75rem;
-    text-align: center;
-  }
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;letter-spacing:.005em}
+p{margin:0}
+img,svg{max-width:100%}
 
-  .divider {
-    width: 34px;
-    height: 1px;
-    background: var(--hairline);
-    margin: 1.75rem auto;
-  }
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--amber);outline-offset:4px;border-radius:2px}
 
-  .divider::before {
-    content: "";
-    display: block;
-  }
+.shell{max-width:470px;margin:0 auto;position:relative;z-index:2}
+@media(min-width:560px){ .shell{box-shadow:0 0 120px rgba(0,0,0,.5)} }
 
-  p { margin: 0; }
+/* ---------- ambient light layers (fixed, behind everything) ---------- */
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none}
 
-  .lede {
-    font-size: 1.02rem;
-    color: var(--ink-soft);
-    max-width: 30ch;
-    margin: 0 auto;
-    font-weight: 300;
-  }
+/* the warmth that floods in when the lamp catches */
+#warmth{
+  background:
+    radial-gradient(ellipse 78% 52% at 50% 34%,rgba(240,169,79,.20),transparent 68%),
+    radial-gradient(ellipse 120% 80% at 50% 0%,var(--burgundy),transparent 72%),
+    linear-gradient(180deg,var(--void-2),var(--void) 60%);
+  opacity:0;
+  transition:opacity 2.6s var(--ease);
+}
+html.lit #warmth{opacity:1}
 
-  button {
-    font-family: var(--font-body);
-    cursor: pointer;
-    border: none;
-    background: none;
-    color: inherit;
-  }
-  button:focus-visible, a:focus-visible {
-    outline: 2px solid var(--accent-soft);
-    outline-offset: 3px;
-  }
+/* slow rotating light rays from the flame */
+#rays{
+  background:repeating-conic-gradient(from 0deg at 50% 30%,
+    rgba(240,169,79,.085) 0deg 3deg, transparent 3deg 11deg);
+  -webkit-mask-image:radial-gradient(circle 62vmin at 50% 30%,#000 5%,transparent 72%);
+  mask-image:radial-gradient(circle 62vmin at 50% 30%,#000 5%,transparent 72%);
+  opacity:0;
+  transition:opacity 3s var(--ease) .5s;
+  animation:spin 110s linear infinite;
+}
+html.lit #rays{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.95rem 2.1rem;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    font-size: 0.92rem;
-    letter-spacing: 0.02em;
-    color: var(--gold-300);
-    background: rgba(232, 202, 160, 0.04);
-    transition: background 0.3s ease, transform 0.2s ease, border-color 0.3s ease;
-    min-height: 48px;
-  }
-  .btn:active { transform: scale(0.97); }
-  @media (hover: hover) {
-    .btn:hover { background: rgba(232, 202, 160, 0.09); border-color: var(--accent); }
-  }
+#motes{overflow:hidden}
+.mote{
+  position:absolute;bottom:-12px;width:3px;height:3px;border-radius:50%;
+  background:var(--amber);box-shadow:0 0 7px 1.5px rgba(240,169,79,.65);
+  opacity:0;animation:drift linear infinite;
+}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(.7);opacity:0}
+  12%{opacity:.8}
+  85%{opacity:.25}
+  100%{transform:translate3d(var(--dx,14px),-104vh,0) scale(1);opacity:0}
+}
 
-  /* ============================================================
-     OPENING SCREEN
-     ============================================================ */
-  #opening {
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: calc(var(--safe-t) + 2rem);
-    padding-bottom: calc(var(--safe-b) + 2rem);
-    overflow: hidden;
-  }
+/* ============================================================
+   STAGE — the unlit room
+   ============================================================ */
+#stage{
+  position:relative;
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:calc(var(--st) + 2.2rem) 1.6rem calc(var(--sb) + 2.2rem);
+  text-align:center;
+}
 
-  .particle-field {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-  }
-  .particle {
-    position: absolute;
-    bottom: -10px;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    opacity: 0;
-    filter: blur(0.2px);
-    box-shadow: 0 0 6px 1px rgba(227,167,90,0.7);
-    animation: rise linear infinite;
-  }
-  @keyframes rise {
-    0%   { transform: translateY(0) translateX(0); opacity: 0; }
-    10%  { opacity: 0.85; }
-    90%  { opacity: 0.3; }
-    100% { transform: translateY(-92vh) translateX(var(--drift, 12px)); opacity: 0; }
-  }
+.stage-title{
+  font-family:var(--display);
+  font-size:clamp(1.55rem,6.4vw,1.95rem);
+  color:var(--cream);
+  opacity:0;animation:up 1.2s var(--ease) .25s forwards;
+}
+.stage-sub{
+  margin-top:.85rem;
+  font-size:.93rem;line-height:1.85;color:var(--cream-faint);
+  max-width:20ch;
+  opacity:0;animation:up 1.2s var(--ease) .5s forwards;
+}
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 
-  .opening-inner {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    opacity: 0;
-    animation: fadeUp 1.3s ease 0.15s forwards;
-  }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(14px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+/* both the invitation and the greeting share this slot so the
+   swap reads as one continuous moment, not a page change */
+.stage-copy{
+  position:relative;
+  display:grid;
+  transition:opacity .7s var(--ease);
+}
+.stage-copy > *{grid-area:1/1}
+html.lit .stage-invite{opacity:0;pointer-events:none;transition:opacity .6s var(--ease)}
 
-  .glow-orb {
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(227,167,90,0.22) 0%, rgba(227,167,90,0) 70%);
-    top: 8%;
-    z-index: 1;
-    animation: pulseGlow 5s ease-in-out infinite;
-  }
-  @keyframes pulseGlow {
-    0%, 100% { opacity: 0.7; transform: scale(1); }
-    50%      { opacity: 1; transform: scale(1.08); }
-  }
+.stage-greet{
+  opacity:0;pointer-events:none;
+  transform:translateY(10px);
+  transition:opacity 1.4s var(--ease) 1.5s,transform 1.4s var(--ease) 1.5s;
+}
+html.lit .stage-greet{opacity:1;transform:none;pointer-events:auto}
 
-  .hero-diya svg { width: 96px; height: auto; }
+.greet-title{
+  font-family:var(--display);
+  font-size:clamp(1.9rem,8.2vw,2.5rem);
+  color:var(--cream);
+  line-height:1.15;
+}
+.greet-wish{
+  margin-top:1.1rem;
+  font-size:.97rem;line-height:1.85;
+  color:var(--cream-dim);
+  max-width:25ch;margin-left:auto;margin-right:auto;
+}
 
-  .eyebrow-mark { font-size: 0; }
+/* ---------- the lamp ---------- */
+.lamp-wrap{
+  position:relative;
+  width:min(72vw,268px);
+  margin:0 auto 2.4rem;
+  display:flex;align-items:center;justify-content:center;
+}
 
-  h1.headline {
-    font-size: clamp(2.1rem, 8vw, 2.6rem);
-    font-weight: 450;
-    letter-spacing: 0.01em;
-    color: var(--ink);
-    margin-top: 1.6rem;
-  }
+.halo{
+  position:absolute;width:150%;aspect-ratio:1;border-radius:50%;
+  top:-18%;
+  background:radial-gradient(circle,rgba(240,169,79,.55) 0%,rgba(240,169,79,.16) 34%,transparent 68%);
+  opacity:0;transform:scale(.25);
+  transition:opacity 2.2s var(--ease),transform 2.4s var(--ease);
+  pointer-events:none;
+}
+html.lit .halo{opacity:1;transform:scale(1)}
 
-  .wish-quote {
-    margin-top: 1.4rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 300;
-    font-size: 1.08rem;
-    color: var(--ink-soft);
-    max-width: 26ch;
-    line-height: 1.65;
-  }
+.lamp-btn{
+  position:relative;z-index:2;
+  width:100%;padding:0;
+  border-radius:28px;
+  display:block;
+  transition:transform .35s var(--ease);
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+}
+.lamp-btn:active{transform:scale(.965)}
+html.lit .lamp-btn{cursor:default}
 
-  .brand-lockup {
-    margin-top: 2.6rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .brand-name {
-    font-family: var(--font-body);
-    font-size: 0.82rem;
-    letter-spacing: 0.16em;
-    color: var(--accent-soft);
-    font-weight: 500;
-  }
-  .brand-since {
-    font-size: 0.78rem;
-    color: rgba(246,236,217,0.45);
-    font-weight: 300;
-  }
+.lamp-btn svg{display:block;width:100%;height:auto;overflow:visible}
 
-  .enter-btn { margin-top: 2.8rem; }
+/* unlit lamp sits in near-darkness */
+.vessel{transition:filter 2s var(--ease)}
+html:not(.lit) .vessel{filter:brightness(.42) saturate(.55)}
+html.lit .vessel{filter:brightness(1) saturate(1) drop-shadow(0 6px 22px rgba(240,169,79,.35))}
 
-  /* ============================================================
-     MUSIC CONTROL
-     ============================================================ */
-  #music-toggle {
-    position: fixed;
-    top: calc(var(--safe-t) + 1rem);
-    right: 1.1rem;
-    z-index: 40;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: rgba(35, 9, 15, 0.55);
-    border: 1px solid var(--hairline);
-    backdrop-filter: blur(6px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    -webkit-backdrop-filter: blur(6px);
-  }
-  #music-toggle svg { width: 19px; height: 19px; color: var(--gold-300); }
-  #music-toggle.playing .note-wiggle { animation: wiggle 1.6s ease-in-out infinite; }
-  @keyframes wiggle {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-1.5px); }
-  }
-  #music-toggle[hidden] { display: none; }
+.flame{opacity:0;transform-origin:100px 88px;transition:opacity .9s var(--ease)}
+html.lit .flame{opacity:1}
+html.lit .flame-inner{animation:flick 2.4s ease-in-out infinite}
+@keyframes flick{
+  0%,100%{transform:scaleY(1) scaleX(1)}
+  22%{transform:scaleY(1.07) scaleX(.965)}
+  48%{transform:scaleY(.955) scaleX(1.035)}
+  71%{transform:scaleY(1.04) scaleX(.985)}
+}
 
-  /* ============================================================
-     DIYA LIGHTING INTERACTION
-     ============================================================ */
-  #light-diya { background: var(--bg-panel); }
+.tap-hint{
+  margin-top:.2rem;
+  font-size:.74rem;letter-spacing:.2em;color:var(--cream-faint);
+  opacity:0;animation:hintIn 1s var(--ease) 1.4s forwards;
+}
+@keyframes hintIn{to{opacity:1}}
+html:not(.lit) .tap-hint{animation:hintIn 1s var(--ease) 1.4s forwards,breathe 3.4s ease-in-out 2.4s infinite}
+@keyframes breathe{0%,100%{opacity:.85}50%{opacity:.35}}
+html.lit .tap-hint{opacity:0;transition:opacity .4s}
 
-  .section-kicker {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.02rem;
-    color: var(--gold-300);
-    font-weight: 450;
-  }
+/* scroll cue, only once lit */
+.cue{
+  position:absolute;left:50%;bottom:calc(var(--sb) + 1.5rem);
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.5rem;
+  font-size:.68rem;letter-spacing:.22em;color:var(--cream-faint);
+  opacity:0;pointer-events:none;
+  transition:opacity 1.2s var(--ease) 3.2s;
+}
+html.lit .cue{opacity:1}
+.cue span:last-child{width:1px;height:26px;background:linear-gradient(var(--gold),transparent);animation:cueDrop 2.6s ease-in-out infinite}
+@keyframes cueDrop{0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
-  .diya-stage {
-    position: relative;
-    margin: 2.4rem auto 1.2rem;
-    width: 180px;
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+/* ============================================================
+   THE SCROLL — sealed until lit
+   ============================================================ */
+#scroll-body{
+  opacity:0;
+  transition:opacity 1.4s var(--ease) 2.4s;
+}
+html.lit #scroll-body{opacity:1}
 
-  .diya-tap-btn {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    min-width: 48px;
-    min-height: 48px;
-  }
+section.leaf{
+  padding:5.5rem 1.8rem;
+  text-align:center;
+  position:relative;
+}
 
-  .diya-tap-btn svg { width: 140px; height: auto; position: relative; z-index: 2; }
+.reveal{opacity:0;transform:translateY(16px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.reveal.seen{opacity:1;transform:none}
 
-  .flame-group { opacity: 0; transform-origin: 50% 100%; transition: opacity 0.5s ease; }
-  .lit .flame-group { opacity: 1; }
+.leaf h2{
+  font-size:clamp(1.42rem,5.8vw,1.7rem);
+  color:var(--cream);
+}
+.leaf .body{
+  margin-top:1.25rem;
+  font-size:1rem;line-height:1.88;
+  color:var(--cream-dim);
+  max-width:27ch;margin-left:auto;margin-right:auto;
+}
+.sign-off{
+  margin-top:1.6rem;
+  font-family:var(--display);
+  font-size:1.14rem;
+  color:var(--gold-pale);
+}
 
-  .flame-core {
-    animation: flicker 2.1s ease-in-out infinite;
-  }
-  @keyframes flicker {
-    0%, 100% { transform: scaleY(1) scaleX(1); }
-    25%      { transform: scaleY(1.06) scaleX(0.97); }
-    50%      { transform: scaleY(0.95) scaleX(1.03); }
-    75%      { transform: scaleY(1.03) scaleX(0.99); }
-  }
+/* a thin brass rule, used to separate leaves of the card */
+.rule{
+  width:100%;max-width:170px;height:1px;margin:0 auto;
+  background:linear-gradient(90deg,transparent,var(--rule) 22%,var(--rule) 78%,transparent);
+}
 
-  .diya-glow {
-    position: absolute;
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(227,167,90,0.55) 0%, rgba(227,167,90,0) 68%);
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 1;
-  }
-  .lit .diya-glow { opacity: 1; }
+/* signature block — reads as a hand-signed card, not an About Us */
+#signature{padding-top:4.2rem;padding-bottom:4.2rem}
+.sig-name{
+  font-family:var(--display);
+  font-size:1.06rem;letter-spacing:.055em;
+  color:var(--gold-pale);
+}
+.sig-since{margin-top:.3rem;font-size:.74rem;letter-spacing:.14em;color:var(--cream-faint)}
+.sig-line{margin-top:1.1rem;font-size:.95rem;color:var(--cream-dim)}
 
-  .diya-sparks { position: absolute; inset: -20px; pointer-events: none; opacity: 0; transition: opacity 0.6s ease 0.2s; }
-  .lit .diya-sparks { opacity: 1; }
-  .spark {
-    position: absolute;
-    width: 2.5px;
-    height: 2.5px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    box-shadow: 0 0 5px 1px rgba(227,167,90,0.8);
-    opacity: 0;
-  }
-  .lit .spark { animation: sparkFloat 2.6s ease-in infinite; }
+/* contact — plain, useful, quiet */
+#contact{padding-top:4rem;padding-bottom:4rem}
+.c-stack{display:flex;flex-direction:column;align-items:center;gap:1.6rem;margin-top:1.9rem}
+.c-item{display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.c-label{font-size:.68rem;letter-spacing:.2em;color:var(--cream-faint)}
+.c-value{font-size:1rem;color:var(--cream);max-width:26ch;line-height:1.55}
+.c-value a{color:inherit;text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px}
 
-  @keyframes sparkFloat {
-    0%   { opacity: 0; transform: translateY(0); }
-    15%  { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-70px); }
-  }
+.maps{
+  display:inline-flex;align-items:center;gap:.55rem;
+  min-height:50px;padding:.9rem 1.9rem;
+  border:1px solid var(--rule);border-radius:999px;
+  font-size:.92rem;color:var(--gold-pale);text-decoration:none;
+  background:rgba(230,204,155,.04);
+  transition:background .3s var(--ease),border-color .3s var(--ease),transform .2s var(--ease);
+}
+.maps:active{transform:scale(.97)}
+@media(hover:hover){.maps:hover{background:rgba(230,204,155,.09);border-color:var(--gold)}}
 
-  .diya-prompt {
-    margin-top: 0.6rem;
-    font-size: 0.86rem;
-    color: rgba(246,236,217,0.55);
-    letter-spacing: 0.01em;
-    transition: opacity 0.5s ease;
-  }
-  .lit .diya-prompt-wrap .diya-prompt { opacity: 0; height: 0; }
+/* ---------- closing frame ---------- */
+#closing{
+  min-height:88svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:4rem 1.8rem calc(2rem + var(--sb));
+  text-align:center;
+}
+.close-lamp{width:120px;margin-bottom:2.2rem;position:relative}
+.close-lamp svg{display:block;width:100%;height:auto;overflow:visible}
+.close-lamp .flame{opacity:1}
+.close-lamp .flame-inner{animation:flick 2.9s ease-in-out infinite}
+.close-halo{
+  position:absolute;left:50%;top:-40%;transform:translateX(-50%);
+  width:260px;aspect-ratio:1;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(240,169,79,.34),transparent 66%);
+  animation:pulse 5.5s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.62;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.09)}}
 
-  .diya-message {
-    max-width: 28ch;
-    margin: 1.6rem auto 0;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.9s ease 0.3s, transform 0.9s ease 0.3s;
-  }
-  .lit .diya-message { opacity: 1; transform: translateY(0); }
+.close-wish{
+  margin-top:1.5rem;
+  font-family:var(--display);
+  font-size:1.42rem;color:var(--gold-pale);
+}
+.close-line{margin-top:1.1rem;font-size:.96rem;line-height:1.85;color:var(--cream-dim);max-width:24ch}
+.close-contact{
+  margin-top:2.6rem;display:flex;flex-direction:column;gap:.55rem;align-items:center;
+  font-size:.86rem;color:var(--cream-faint);
+}
+.close-contact a{color:var(--cream-dim)}
 
-  /* wish interaction */
-  .wish-block {
-    margin-top: 2.2rem;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.7s ease, opacity 0.7s ease;
-  }
-  .lit .wish-block { max-height: 340px; opacity: 1; }
+footer{
+  text-align:center;
+  padding:2rem 1.6rem calc(2.4rem + var(--sb));
+  font-size:.72rem;color:rgba(247,236,216,.28);
+}
 
-  .wish-active .wish-prompt,
-  .wish-active .wish-btn { display: none; }
+/* ============================================================
+   MUSIC CONTROL — appears only after the lamp is lit
+   ============================================================ */
+#music{
+  position:fixed;z-index:60;
+  right:1rem;bottom:calc(var(--sb) + 1rem);
+  display:inline-flex;align-items:center;gap:.5rem;
+  min-height:44px;padding:.55rem .95rem .55rem .8rem;
+  border:1px solid var(--rule);border-radius:999px;
+  background:rgba(18,6,8,.72);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--gold-pale);font-size:.76rem;letter-spacing:.04em;
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:opacity .8s var(--ease),transform .8s var(--ease);
+}
+#music.show{opacity:1;transform:none;pointer-events:auto}
+#music svg{width:16px;height:16px;flex:none}
 
-  .wish-response {
-    display: none;
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--ink-soft);
-    font-size: 1rem;
-    max-width: 26ch;
-    margin: 0 auto;
-    position: relative;
-    padding-top: 2.4rem;
-  }
-  .wish-active .wish-response { display: block; }
+.bars{display:inline-flex;align-items:flex-end;gap:2px;height:13px}
+.bars i{display:block;width:2px;background:var(--gold-pale);border-radius:1px;height:4px}
+#music.on .bars i{animation:eq .9s ease-in-out infinite}
+#music.on .bars i:nth-child(2){animation-delay:.15s}
+#music.on .bars i:nth-child(3){animation-delay:.3s}
+#music:not(.on) .bars i{height:3px;opacity:.5}
+@keyframes eq{0%,100%{height:4px}50%{height:13px}}
 
-  .wish-rise {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 6px;
-    height: 6px;
-    margin-left: -3px;
-    border-radius: 50%;
-    background: var(--accent-soft);
-    box-shadow: 0 0 12px 3px rgba(227,167,90,0.8);
-    opacity: 0;
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.25s !important;
+    transition-delay:0ms !important;
+    scroll-behavior:auto !important;
   }
-  .wish-active .wish-rise { animation: wishRise 1.8s ease-out forwards; }
-  @keyframes wishRise {
-    0%   { opacity: 0; transform: translateY(30px) scale(0.6); }
-    30%  { opacity: 1; }
-    100% { opacity: 0; transform: translateY(-40px) scale(1.3); }
-  }
+  #motes,#rays{display:none}
+  .reveal{opacity:1;transform:none}
+}
 
-  /* ============================================================
-     GREETING / THANK YOU / BRAND / CONTACT
-     ============================================================ */
-  .quote-mark {
-    font-family: var(--font-display);
-    font-size: 2.2rem;
-    color: var(--accent);
-    line-height: 1;
-    opacity: 0.7;
-  }
-
-  #greeting h2, #thankyou h2 {
-    font-size: clamp(1.5rem, 6vw, 1.8rem);
-    color: var(--ink);
-    margin-top: 0.9rem;
-  }
-
-  #greeting p.lede, #thankyou p.lede {
-    margin-top: 1.3rem;
-    font-size: 1rem;
-  }
-
-  .closing-line {
-    margin-top: 1.5rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    color: var(--gold-300);
-    font-size: 1.1rem;
-  }
-
-  #thankyou { background: var(--bg-panel); }
-
-  #brand {
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
-  }
-  .brand-mini-name {
-    font-size: 0.85rem;
-    letter-spacing: 0.14em;
-    color: var(--accent-soft);
-    font-weight: 500;
-  }
-  .brand-mini-since {
-    font-size: 0.74rem;
-    color: rgba(246,236,217,0.4);
-    margin-top: 0.3rem;
-  }
-  .brand-mini-line {
-    margin-top: 1rem;
-    font-size: 0.92rem;
-    color: var(--ink-soft);
-    font-weight: 300;
-  }
-
-  #contact {
-    background: var(--bg-panel);
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-  .contact-block {
-    display: flex;
-    flex-direction: column;
-    gap: 1.3rem;
-    align-items: center;
-    margin-top: 1.8rem;
-  }
-  .contact-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  .contact-icon { font-size: 1.1rem; }
-  .contact-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    color: rgba(246,236,217,0.45);
-  }
-  .contact-value {
-    font-size: 0.98rem;
-    color: var(--ink);
-    max-width: 26ch;
-  }
-  .contact-value a { color: inherit; text-decoration: none; border-bottom: 1px solid var(--hairline); }
-
-  .maps-btn { margin-top: 0.3rem; }
-
-  /* ============================================================
-     FINAL SCREEN + FOOTER
-     ============================================================ */
-  #final {
-    min-height: 60svh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .final-diya svg { width: 60px; height: auto; opacity: 0.9; }
-  #final .brand-name { margin-top: 1.4rem; }
-  #final .brand-since { margin-top: 0.15rem; }
-  .final-wish {
-    margin-top: 1.6rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--gold-300);
-  }
-  .final-contact {
-    margin-top: 2.2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.55rem;
-    align-items: center;
-    font-size: 0.88rem;
-    color: var(--ink-soft);
-  }
-  .final-contact a { color: inherit; }
-
-  footer {
-    text-align: center;
-    padding: 2.2rem 1.5rem calc(2.2rem + var(--safe-b));
-    font-size: 0.72rem;
-    color: rgba(246,236,217,0.35);
-    letter-spacing: 0.02em;
-  }
-
-  /* placeholder marker used in-page for anything the owner must replace */
-  .todo {
-    color: #e39b7a;
-    font-style: normal;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-      animation-duration: 0.001ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.2s !important;
-      scroll-behavior: auto !important;
-    }
-    .particle-field { display: none; }
-  }
-
-  html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
 
-<!-- ============================================================
-     MUSIC CONTROL
-     Replace the <source> path below with your real Deepavali
-     instrumental track. See TODO note near the <audio> tag.
-     ============================================================ -->
-<button id="music-toggle" aria-pressed="false" aria-label="Play Deepavali music" hidden>
-  <svg class="note-wiggle" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <path d="M9 17V4.6a1 1 0 0 1 1.28-.96l9 2.57A1 1 0 0 1 20 7.17V19a3 3 0 1 1-2-2.83V8.44l-7-2v9.06A3 3 0 1 1 9 17Z"/>
-  </svg>
-</button>
+<!-- ambient layers -->
+<div class="ambient" id="warmth" aria-hidden="true"></div>
+<div class="ambient" id="rays" aria-hidden="true"></div>
+<div class="ambient" id="motes" aria-hidden="true"></div>
 
-<audio id="bg-music" loop preload="none">
+<!--
+  MUSIC FILE
+  Path: audio/deepavali-music.mp3
+  Nothing loads or plays until the diya is tapped — the tap is what
+  calls audio.play(), which is what mobile browsers require.
+  If the file is missing or blocked, the control simply never appears.
+-->
+<audio id="track" loop preload="none">
   <source src="audio/deepavali-music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="wrap">
+<button id="music" aria-pressed="true" aria-label="Pause music" type="button">
+  <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span id="music-label">Playing</span>
+</button>
 
-  <!-- ============================================================
-       1. OPENING SCREEN
-       ============================================================ -->
-  <section id="opening">
-    <div class="particle-field" id="particle-field" aria-hidden="true"></div>
-    <div class="glow-orb" aria-hidden="true"></div>
+<div class="shell">
 
-    <div class="opening-inner">
-      <div class="hero-diya" aria-hidden="true">
-        <svg viewBox="0 0 120 100" fill="none">
-          <path d="M60 6c5 8 8 13 8 18 0 5-3.5 8-8 8s-8-3-8-8c0-5 3-10 8-18Z" fill="#e3a75a"/>
-          <path d="M60 12c3 5 5 8.5 5 11.5 0 3-2.2 5-5 5s-5-2-5-5c0-3 2-6.5 5-11.5Z" fill="#f6ecd9" opacity="0.9"/>
-          <path d="M14 66c0-4 4-6 10-6h72c6 0 10 2 10 6 0 16-20 28-46 28S14 82 14 66Z" fill="#c99a4d"/>
-          <path d="M14 66c0-4 4-6 10-6h72c6 0 10 2 10 6-1 4-24 7-46 7s-45-3-46-7Z" fill="#e8caa0" opacity="0.5"/>
-          <ellipse cx="60" cy="60" rx="46" ry="9" fill="#4a1720"/>
-        </svg>
-      </div>
+  <!-- =========================================================
+       STAGE
+       ========================================================= -->
+  <main id="stage">
 
-      <h1 class="headline">Happy Deepavali</h1>
+    <div class="lamp-wrap">
+      <div class="halo" aria-hidden="true"></div>
 
-      <p class="wish-quote">May your home be filled with light, your heart with happiness, and your life with countless sweet moments.</p>
+      <button class="lamp-btn" id="lamp" type="button" aria-label="Light the diya">
+        <svg viewBox="0 0 200 170" role="img" aria-hidden="true">
+          <defs>
+            <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#e2b478"/>
+              <stop offset=".45" stop-color="#b87c3c"/>
+              <stop offset="1" stop-color="#6b3f1e"/>
+            </linearGradient>
+            <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#8a5a2b"/>
+              <stop offset=".5" stop-color="#f0d3a0"/>
+              <stop offset="1" stop-color="#8a5a2b"/>
+            </linearGradient>
+            <radialGradient id="flameG" cx=".5" cy=".72" r=".62">
+              <stop offset="0" stop-color="#fff6e0"/>
+              <stop offset=".42" stop-color="#f6c168"/>
+              <stop offset="1" stop-color="#e08a2c"/>
+            </radialGradient>
+            <radialGradient id="flameHalo" cx=".5" cy=".62" r=".5">
+              <stop offset="0" stop-color="rgba(240,169,79,.55)"/>
+              <stop offset="1" stop-color="rgba(240,169,79,0)"/>
+            </radialGradient>
+          </defs>
 
-      <div class="brand-lockup">
-        <span class="brand-name">VAIGA SWEETS &amp; SNACKS</span>
-        <span class="brand-since">Since 2020</span>
-      </div>
-
-      <button class="btn enter-btn" id="enter-btn">Enter Celebration</button>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       3 &amp; 4. LIGHT THE DIYA + MAKE A WISH
-       ============================================================ -->
-  <section id="light-diya">
-    <span class="section-kicker">A little ritual</span>
-
-    <div class="diya-stage" id="diya-stage">
-      <div class="diya-glow" aria-hidden="true"></div>
-      <div class="diya-sparks" aria-hidden="true" id="diya-sparks"></div>
-
-      <button class="diya-tap-btn" id="diya-btn" aria-pressed="false" aria-label="Tap to light the diya">
-        <svg viewBox="0 0 120 100" fill="none">
-          <g class="flame-group">
-            <ellipse cx="60" cy="16" rx="13" ry="17" fill="rgba(227,167,90,0.35)" />
-            <path class="flame-core" d="M60 4c5 8 8 13 8 18 0 5-3.5 8-8 8s-8-3-8-8c0-5 3-10 8-18Z" fill="#e3a75a"/>
-            <path class="flame-core" d="M60 11c3 5 5 8.5 5 11.5 0 3-2.2 5-5 5s-5-2-5-5c0-3 2-6.5 5-11.5Z" fill="#f6ecd9" opacity="0.95"/>
+          <!-- flame -->
+          <g class="flame">
+            <ellipse cx="100" cy="62" rx="42" ry="50" fill="url(#flameHalo)"/>
+            <g class="flame-inner" style="transform-origin:100px 88px">
+              <path d="M100 22c13 22 19 36 19 47 0 13-8 21-19 21s-19-8-19-21c0-11 6-25 19-47Z" fill="url(#flameG)"/>
+              <path d="M100 46c6.5 13 9.5 20 9.5 26 0 7.5-4 11.5-9.5 11.5s-9.5-4-9.5-11.5c0-6 3-13 9.5-26Z" fill="#fff8ea" opacity=".92"/>
+            </g>
           </g>
-          <path d="M14 66c0-4 4-6 10-6h72c6 0 10 2 10 6 0 16-20 28-46 28S14 82 14 66Z" fill="#c99a4d"/>
-          <path d="M14 66c0-4 4-6 10-6h72c6 0 10 2 10 6-1 4-24 7-46 7s-45-3-46-7Z" fill="#e8caa0" opacity="0.5"/>
-          <ellipse cx="60" cy="60" rx="46" ry="9" fill="#33101a"/>
+
+          <!-- wick -->
+          <path d="M97.5 96c0-6 1-11 2.5-14 1.5 3 2.5 8 2.5 14Z" fill="#4a2c18"/>
+
+          <!-- vessel -->
+          <g class="vessel">
+            <path d="M26 95c0 34 26 57 74 57s74-23 74-57Z" fill="url(#brass)"/>
+            <ellipse cx="100" cy="95" rx="74" ry="14" fill="url(#rim)"/>
+            <ellipse cx="100" cy="96" rx="65" ry="10" fill="#3a1f10"/>
+            <ellipse cx="100" cy="97" rx="58" ry="7.5" fill="#6d4420" opacity=".75"/>
+            <path d="M74 152h52c-3 6-12 9-26 9s-23-3-26-9Z" fill="#5a3418"/>
+          </g>
         </svg>
       </button>
     </div>
 
-    <div class="diya-prompt-wrap">
-      <p class="diya-prompt" id="diya-prompt">Tap the diya to light it</p>
-    </div>
-
-    <p class="diya-message" id="diya-message">May this light bring happiness, peace and prosperity to you and your loved ones.</p>
-
-    <div class="wish-block" id="wish-block">
-      <div class="wish-prompt">
-        <button class="btn wish-btn" id="wish-btn">Make a Wish ✨</button>
+    <div class="stage-copy">
+      <div class="stage-invite">
+        <h1 class="stage-title">Light the Diya</h1>
+        <p class="stage-sub">A little light. A little sweetness. A little joy.</p>
+        <p class="tap-hint">TAP TO LIGHT</p>
       </div>
-      <div class="wish-response" id="wish-response">
-        <span class="wish-rise" aria-hidden="true"></span>
-        May your wishes find their way to you.
+
+      <div class="stage-greet" aria-live="polite">
+        <p class="greet-title">Happy Deepavali</p>
+        <p class="greet-wish">May your home be filled with light, your heart with happiness, and your life with countless sweet moments.</p>
       </div>
     </div>
-  </section>
 
-  <!-- ============================================================
-       5. DEEPAVALI GREETING
-       ============================================================ -->
-  <section id="greeting">
-    <span class="quote-mark" aria-hidden="true">&ldquo;</span>
-    <h2>A Little Deepavali Wish</h2>
-    <p class="lede">May this festival of lights fill your home with warmth, your heart with happiness, and your days with beautiful moments shared with the people you love.</p>
-    <p class="closing-line">Happy Deepavali 🪔</p>
-  </section>
+    <div class="cue" aria-hidden="true"><span>SCROLL</span><span></span></div>
+  </main>
 
-  <!-- ============================================================
-       6. THANK YOU
-       ============================================================ -->
-  <section id="thankyou">
-    <h2>Thank You ❤️</h2>
-    <p class="lede">Thank you for being a part of our journey and for sharing this special celebration with us.</p>
-    <p class="closing-line">Wishing you and your family a very Happy Deepavali.</p>
-  </section>
+  <!-- =========================================================
+       THE CARD — sealed until lit
+       ========================================================= -->
+  <div id="scroll-body" aria-hidden="true">
 
-  <!-- ============================================================
-       7. VERY SMALL BRAND INFORMATION
-       ============================================================ -->
-  <section id="brand">
-    <div class="brand-mini-name">VAIGA SWEETS &amp; SNACKS</div>
-    <div class="brand-mini-since">Since 2020</div>
-    <p class="brand-mini-line">Serving sweetness with care since 2020.</p>
-  </section>
+    <div class="rule"></div>
 
-  <!-- ============================================================
-       8. CONTACT / LOCATION
-       TODO — replace the three placeholders below with the real
-       address, phone number, and Google Maps link.
-       ============================================================ -->
-  <section id="contact">
-    <span class="section-kicker">Find us</span>
-    <div class="contact-block">
-      <div class="contact-row">
-        <span class="contact-icon" aria-hidden="true">📍</span>
-        <span class="contact-label">OUR LOCATION</span>
-        <span class="contact-value">Lekshmi Nivas, T D Nagar 1, Kollam</span>
+    <section class="leaf" id="wish">
+      <div class="reveal">
+        <h2>A Little Deepavali Wish</h2>
+        <p class="body">May this festival of lights fill your home with warmth, your heart with happiness, and your days with beautiful moments shared with the people you love.</p>
+        <p class="sign-off">Happy Deepavali 🪔</p>
       </div>
-      <div class="contact-row">
-        <span class="contact-icon" aria-hidden="true">📞</span>
-        <span class="contact-label">CALL US</span>
-        <span class="contact-value"><a href="tel:+917012525750" id="phone-link">70125 25750</a></span>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="leaf" id="thanks">
+      <div class="reveal">
+        <h2>Thank You ❤️</h2>
+        <p class="body">Thank you for being a part of our journey and for sharing this special celebration with us.</p>
+        <p class="sign-off">Wishing you and your family a very Happy Deepavali.</p>
       </div>
-      <a class="btn maps-btn" id="maps-link" href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
-    </div>
-  </section>
+    </section>
 
-  <!-- ============================================================
-       9. FINAL SCREEN
-       ============================================================ -->
-  <section id="final">
-    <div class="final-diya" aria-hidden="true">
-      <svg viewBox="0 0 120 100" fill="none">
-        <path d="M60 6c5 8 8 13 8 18 0 5-3.5 8-8 8s-8-3-8-8c0-5 3-10 8-18Z" fill="#e3a75a"/>
-        <path d="M14 66c0-4 4-6 10-6h72c6 0 10 2 10 6 0 16-20 28-46 28S14 82 14 66Z" fill="#c99a4d"/>
-        <ellipse cx="60" cy="60" rx="46" ry="9" fill="#23090f"/>
-      </svg>
-    </div>
-    <div class="brand-lockup">
-      <span class="brand-name">VAIGA SWEETS &amp; SNACKS</span>
-      <span class="brand-since">Since 2020</span>
-    </div>
-    <p class="final-wish">Happy Deepavali 🪔</p>
+    <div class="rule"></div>
 
-    <div class="final-contact">
-      <span>📍 Lekshmi Nivas, T D Nagar 1, Kollam</span>
-      <span>📞 <a href="tel:+917012525750">70125 25750</a></span>
-      <a href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
-    </div>
-  </section>
+    <section class="leaf" id="signature">
+      <div class="reveal">
+        <p class="sig-name">Vaiga Sweets &amp; Snacks</p>
+        <p class="sig-since">SINCE 2020</p>
+        <p class="sig-line">Serving sweetness with care since 2020.</p>
+      </div>
+    </section>
 
-  <footer>Made with ❤️ for the festival of lights.</footer>
+    <section class="leaf" id="contact">
+      <div class="reveal">
+        <h2>Find Us</h2>
+        <div class="c-stack">
+          <div class="c-item">
+            <span class="c-label">OUR LOCATION</span>
+            <span class="c-value">Lekshmi Nivas, T D Nagar 1, Kollam</span>
+          </div>
+          <div class="c-item">
+            <span class="c-label">CALL US</span>
+            <span class="c-value"><a href="tel:+917012525750">70125 25750</a></span>
+          </div>
+          <a class="maps" href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="closing">
+      <div class="reveal">
+        <div class="close-lamp">
+          <div class="close-halo" aria-hidden="true"></div>
+          <svg viewBox="0 0 200 170" aria-hidden="true">
+            <g class="flame">
+              <ellipse cx="100" cy="62" rx="42" ry="50" fill="url(#flameHalo)"/>
+              <g class="flame-inner" style="transform-origin:100px 88px">
+                <path d="M100 22c13 22 19 36 19 47 0 13-8 21-19 21s-19-8-19-21c0-11 6-25 19-47Z" fill="url(#flameG)"/>
+                <path d="M100 46c6.5 13 9.5 20 9.5 26 0 7.5-4 11.5-9.5 11.5s-9.5-4-9.5-11.5c0-6 3-13 9.5-26Z" fill="#fff8ea" opacity=".92"/>
+              </g>
+            </g>
+            <path d="M97.5 96c0-6 1-11 2.5-14 1.5 3 2.5 8 2.5 14Z" fill="#4a2c18"/>
+            <g class="vessel">
+              <path d="M26 95c0 34 26 57 74 57s74-23 74-57Z" fill="url(#brass)"/>
+              <ellipse cx="100" cy="95" rx="74" ry="14" fill="url(#rim)"/>
+              <ellipse cx="100" cy="96" rx="65" ry="10" fill="#3a1f10"/>
+              <path d="M74 152h52c-3 6-12 9-26 9s-23-3-26-9Z" fill="#5a3418"/>
+            </g>
+          </svg>
+        </div>
+
+        <p class="sig-name">Vaiga Sweets &amp; Snacks</p>
+        <p class="sig-since">SINCE 2020</p>
+
+        <p class="close-wish">Happy Deepavali 🪔</p>
+        <p class="close-line">May your year be filled with light, happiness and beautiful moments.</p>
+
+        <div class="close-contact">
+          <span>📍 Lekshmi Nivas, T D Nagar 1, Kollam</span>
+          <span>📞 <a href="tel:+917012525750">70125 25750</a></span>
+          <a href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
+        </div>
+      </div>
+      <footer>Made with ❤️ for the festival of lights.</footer>
+    </section>
+  </div>
 </div>
 
 <script>
-(function () {
+(function(){
   "use strict";
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- floating particles (opening screen) ---------- */
-  if (!reduceMotion) {
-    var field = document.getElementById('particle-field');
-    var count = 14;
-    for (var i = 0; i < count; i++) {
-      var p = document.createElement('span');
-      p.className = 'particle';
-      var left = Math.random() * 100;
-      var duration = 6 + Math.random() * 6;
-      var delay = Math.random() * 6;
-      var drift = (Math.random() * 40 - 20).toFixed(0) + 'px';
-      p.style.left = left + '%';
-      p.style.animationDuration = duration + 's';
-      p.style.animationDelay = delay + 's';
-      p.style.setProperty('--drift', drift);
-      field.appendChild(p);
-    }
+  var root  = document.documentElement;
+  var calm  = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lamp  = document.getElementById('lamp');
+  var track = document.getElementById('track');
+  var music = document.getElementById('music');
+  var label = document.getElementById('music-label');
+  var scrollBody = document.getElementById('scroll-body');
+
+  root.classList.add('sealed');
+
+  /* ---------------------------------------------------------
+     A soft chime, synthesised — no extra file to download.
+     --------------------------------------------------------- */
+  function chime(){
+    try{
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if(!AC) return;
+      var ctx = new AC();
+      [880, 1318.5].forEach(function(freq, i){
+        var osc = ctx.createOscillator();
+        var gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        var t = ctx.currentTime + i * 0.13;
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(0.09, t + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + 1.8);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(t);
+        osc.stop(t + 1.9);
+      });
+      setTimeout(function(){ ctx.close && ctx.close(); }, 2600);
+    }catch(e){ /* a missing chime is not worth surfacing */ }
   }
 
-  /* ---------- enter celebration ---------- */
-  var enterBtn = document.getElementById('enter-btn');
-  var diyaSection = document.getElementById('light-diya');
-  enterBtn.addEventListener('click', function () {
-    diyaSection.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
-  });
-
-  /* ---------- light the diya ---------- */
-  var diyaStage = document.getElementById('diya-stage');
-  var diyaBtn = document.getElementById('diya-btn');
-  var sparksHost = document.getElementById('diya-sparks');
-  var lit = false;
-
-  function buildSparks() {
-    sparksHost.innerHTML = '';
-    var n = reduceMotion ? 0 : 7;
-    for (var i = 0; i < n; i++) {
-      var s = document.createElement('span');
-      s.className = 'spark';
-      s.style.left = (30 + Math.random() * 40) + '%';
-      s.style.top = (20 + Math.random() * 20) + '%';
-      s.style.animationDelay = (Math.random() * 2.4) + 's';
-      sparksHost.appendChild(s);
-    }
-  }
-
-  diyaBtn.addEventListener('click', function () {
-    if (lit) return;
-    lit = true;
-    diyaStage.classList.add('lit');
-    document.getElementById('light-diya').classList.add('lit');
-    diyaBtn.setAttribute('aria-pressed', 'true');
-    diyaBtn.setAttribute('aria-label', 'Diya lit');
-    buildSparks();
-  });
-
-  /* the .lit class needs to live on the section for CSS scoping */
-  var litObserverTarget = document.getElementById('light-diya');
-
-  /* ---------- make a wish ---------- */
-  var wishBtn = document.getElementById('wish-btn');
-  var wishSection = document.getElementById('light-diya');
-  wishBtn.addEventListener('click', function () {
-    wishSection.classList.add('wish-active');
-  });
-
-  /* ---------- music ---------- */
-  var audio = document.getElementById('bg-music');
-  var musicBtn = document.getElementById('music-toggle');
+  /* ---------------------------------------------------------
+     Music. Starts only from the tap — never on load.
+     --------------------------------------------------------- */
+  var TARGET_VOL = 0.42;
   var playing = false;
 
-  audio.addEventListener('error', function () {
-    musicBtn.hidden = true; // no track present yet — hide control rather than show a dead button
-  });
+  function fadeIn(){
+    if(calm){ track.volume = TARGET_VOL; return; }
+    track.volume = 0;
+    var step = 0;
+    var timer = setInterval(function(){
+      step++;
+      var v = Math.min(TARGET_VOL, (step / 40) * TARGET_VOL);
+      try{ track.volume = v; }catch(e){}
+      if(step >= 40) clearInterval(timer);
+    }, 55);
+  }
 
-  /* Reveal the control once we know the source is actually playable */
-  audio.addEventListener('canplaythrough', function () {
-    musicBtn.hidden = false;
-  }, { once: true });
-  audio.addEventListener('loadeddata', function () {
-    musicBtn.hidden = false;
-  }, { once: true });
-
-  musicBtn.addEventListener('click', function () {
-    if (!playing) {
-      audio.play().then(function () {
+  function startMusic(){
+    var attempt = track.play();
+    if(attempt && attempt.then){
+      attempt.then(function(){
         playing = true;
-        musicBtn.classList.add('playing');
-        musicBtn.setAttribute('aria-pressed', 'true');
-        musicBtn.setAttribute('aria-label', 'Pause Deepavali music');
-      }).catch(function () {
-        musicBtn.hidden = true;
+        fadeIn();
+        showControl(true);
+      }).catch(function(){
+        /* blocked or no file — offer the control, stay silent */
+        playing = false;
+        showControl(track.error ? false : true);
       });
-    } else {
-      audio.pause();
+    }
+  }
+
+  function showControl(on){
+    if(!music) return;
+    music.classList.add('show');
+    setState(on);
+  }
+
+  function setState(on){
+    music.classList.toggle('on', on);
+    music.setAttribute('aria-pressed', on ? 'true' : 'false');
+    music.setAttribute('aria-label', on ? 'Pause music' : 'Play music');
+    label.textContent = on ? 'Playing' : 'Paused';
+  }
+
+  music.addEventListener('click', function(){
+    if(playing){
+      track.pause();
       playing = false;
-      musicBtn.classList.remove('playing');
-      musicBtn.setAttribute('aria-pressed', 'false');
-      musicBtn.setAttribute('aria-label', 'Play Deepavali music');
+      setState(false);
+    }else{
+      var a = track.play();
+      if(a && a.then){
+        a.then(function(){ playing = true; fadeIn(); setState(true); })
+         .catch(function(){ setState(false); });
+      }
     }
   });
 
-  /* Try to detect the placeholder audio file once, quietly */
-  audio.load();
+  /* if the file is absent entirely, never show a dead control */
+  track.addEventListener('error', function(){
+    music.classList.remove('show');
+  });
+
+  /* ---------------------------------------------------------
+     Floating motes — created only once there is light to catch
+     --------------------------------------------------------- */
+  function motes(){
+    if(calm) return;
+    var host = document.getElementById('motes');
+    for(var i = 0; i < 16; i++){
+      var m = document.createElement('span');
+      m.className = 'mote';
+      m.style.left = (Math.random() * 100) + '%';
+      m.style.animationDuration = (9 + Math.random() * 9) + 's';
+      m.style.animationDelay = (Math.random() * 9) + 's';
+      m.style.setProperty('--dx', (Math.random() * 60 - 30).toFixed(0) + 'px');
+      host.appendChild(m);
+    }
+  }
+
+  /* ---------------------------------------------------------
+     THE MOMENT
+     --------------------------------------------------------- */
+  var lit = false;
+
+  function light(){
+    if(lit) return;
+    lit = true;
+
+    root.classList.add('lit');
+    lamp.setAttribute('aria-label', 'The diya is lit');
+    lamp.disabled = true;
+
+    chime();
+    startMusic();
+    motes();
+
+    /* unseal the rest of the card once the flame has settled */
+    setTimeout(function(){
+      root.classList.remove('sealed');
+      scrollBody.removeAttribute('aria-hidden');
+      watchLeaves();
+    }, calm ? 200 : 2200);
+  }
+
+  lamp.addEventListener('click', light);
+
+  /* ---------------------------------------------------------
+     Scroll reveals
+     --------------------------------------------------------- */
+  function watchLeaves(){
+    var items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){
+      Array.prototype.forEach.call(items, function(el){ el.classList.add('seen'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('seen');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -8% 0px' });
+    Array.prototype.forEach.call(items, function(el){ io.observe(el); });
+  }
 })();
 </script>
-
 </body>
 </html>
