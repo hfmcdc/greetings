@@ -206,6 +206,21 @@ html.lit .stage-greet{opacity:1;transform:none;pointer-events:auto}
 html.lit .lamp-btn{cursor:default}
 .lamp-btn svg{display:block;width:100%;height:auto;overflow:visible}
 
+/* the flame is invisible until lit; the vessel sits dim in the dark */
+.flame{opacity:0;transform-origin:100px 88px;transition:opacity .9s var(--ease)}
+html.lit .flame{opacity:1}
+html.lit .flame-inner{animation:flick 2.4s ease-in-out infinite}
+@keyframes flick{
+  0%,100%{transform:scaleY(1) scaleX(1)}
+  22%{transform:scaleY(1.07) scaleX(.965)}
+  48%{transform:scaleY(.955) scaleX(1.035)}
+  71%{transform:scaleY(1.04) scaleX(.985)}
+}
+
+.vessel{transition:filter 2s var(--ease)}
+html:not(.lit) .vessel{filter:brightness(.42) saturate(.55)}
+html.lit .vessel{filter:brightness(1) saturate(1) drop-shadow(0 6px 22px rgba(240,169,79,.35))}
+
 /* a slow ring pushing outward from the lamp: "press here" */
 .tap-ring{
   position:absolute;left:50%;top:54%;
