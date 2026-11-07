@@ -79,6 +79,6 @@ rights for commercial use.
 
 `og-image.jpg` (1200x630) is the picture shown when the link is shared.
 WhatsApp needs an absolute URL, so after deploying, replace every
-`https://YOUR-SITE.vercel.app` in the `<head>` of `index.html` with the real
+`https://greetings-rho-eight.vercel.app` in the `<head>` of `index.html` with the real
 site address. WhatsApp caches previews, so test with a fresh link or add
 `?v=2` to the end.
