@@ -74,3 +74,11 @@ rights for commercial use.
   keyboard. Music control exposes `aria-pressed`.
 - The warm palette is deliberately fixed — a system light-mode setting
   will not turn the card into a white page.
+
+## WhatsApp / social link preview
+
+`og-image.jpg` (1200x630) is the picture shown when the link is shared.
+WhatsApp needs an absolute URL, so after deploying, replace every
+`https://YOUR-SITE.vercel.app` in the `<head>` of `index.html` with the real
+site address. WhatsApp caches previews, so test with a fresh link or add
+`?v=2` to the end.
