@@ -295,6 +295,29 @@ html.lit .cue{opacity:1}
 .cue span:last-child{width:1px;height:26px;background:linear-gradient(var(--gold),transparent);animation:cueDrop 2.6s ease-in-out infinite}
 @keyframes cueDrop{0%,100%{opacity:.25;transform:scaleY(.5);transform-origin:top}50%{opacity:1;transform:scaleY(1)}}
 
+
+/* ---------- the celebration: vivid colour wash + firecrackers ---------- */
+#party{z-index:1;opacity:0;background-color:#7a1fd1;transition:opacity .5s ease,background-color .7s linear}
+#party.on{opacity:.93}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:5;pointer-events:none;display:none}
+
+/* ---------- clear scroll instruction ---------- */
+.scroll-hint{
+  margin-top:1.8rem;
+  display:inline-flex;flex-direction:column;align-items:center;gap:.35rem;
+  padding:.8rem 1.5rem .6rem;
+  border:1px solid rgba(240,169,79,.55);border-radius:22px;
+  background:rgba(240,169,79,.14);
+  color:var(--cream);font-size:1rem;font-weight:400;
+  visibility:hidden;opacity:0;
+  -webkit-tap-highlight-color:transparent;
+}
+html.ready .scroll-hint{visibility:visible;opacity:1;transition:opacity 1s var(--ease)}
+.scroll-hint.gone{opacity:0 !important;pointer-events:none;transition:opacity .4s}
+.chev{display:block;width:22px;height:22px;margin-top:-.5rem;animation:chev 1.5s ease-in-out infinite}
+.chev+.chev{animation-delay:.2s;margin-top:-1rem}
+@keyframes chev{0%{opacity:0;transform:translateY(-4px)}50%{opacity:1}100%{opacity:0;transform:translateY(6px)}}
+
 /* short phones: keep the button above the fold */
 @media(max-height:700px){
   #stage{padding-top:calc(var(--st) + 1.3rem);padding-bottom:calc(var(--sb) + 3.2rem)}
@@ -313,7 +336,7 @@ html.lit .cue{opacity:1}
 html.lit #scroll-body{opacity:1}
 
 section.leaf{
-  padding:5.5rem 1.8rem;
+  padding:3rem 1.8rem;
   text-align:center;
   position:relative;
 }
@@ -355,7 +378,7 @@ section.leaf{
 .sig-line{margin-top:1.1rem;font-size:.95rem;color:var(--cream-dim)}
 
 /* contact — plain, useful, quiet */
-#contact{padding-top:4rem;padding-bottom:4rem}
+#contact{padding-top:2.6rem;padding-bottom:2.6rem}
 .c-stack{display:flex;flex-direction:column;align-items:center;gap:1.6rem;margin-top:1.9rem}
 .c-item{display:flex;flex-direction:column;align-items:center;gap:.35rem}
 .c-label{font-size:.68rem;letter-spacing:.2em;color:var(--cream-faint)}
@@ -374,7 +397,7 @@ section.leaf{
 @media(hover:hover){.maps:hover{background:rgba(230,204,155,.09);border-color:var(--gold)}}
 
 /* ---------- share: passing the light on ---------- */
-#share{padding-top:4.4rem;padding-bottom:4.4rem}
+#share{padding-top:2.4rem;padding-bottom:3rem}
 .share-eyebrow{
   font-family:var(--display);
   font-size:1.02rem;
@@ -505,7 +528,7 @@ footer{
     transition-delay:0ms !important;
     scroll-behavior:auto !important;
   }
-  #motes,#rays{display:none}
+  #motes,#rays,#fx,#party{display:none}
   .reveal{opacity:1;transform:none}
 }
 
@@ -518,6 +541,8 @@ html{scroll-behavior:smooth}
 <div class="ambient" id="warmth" aria-hidden="true"></div>
 <div class="ambient" id="rays" aria-hidden="true"></div>
 <div class="ambient" id="motes" aria-hidden="true"></div>
+<div class="ambient" id="party" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
 
 <!--
   MUSIC FILE
@@ -610,7 +635,11 @@ html{scroll-behavior:smooth}
       </svg>
     </div>
 
-    <div class="cue" aria-hidden="true"><span>SCROLL</span><span></span></div>
+    <button class="scroll-hint" id="hint" type="button">
+      <span>Scroll down to read your wishes</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="#f0a94f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="#f0a94f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
+    </button>
   </main>
 
   <!-- =========================================================
@@ -618,39 +647,21 @@ html{scroll-behavior:smooth}
        ========================================================= -->
   <div id="scroll-body" aria-hidden="true">
 
-    <div class="rule"></div>
-
     <section class="leaf" id="wish">
       <div class="reveal">
         <h2>A Little Deepavali Wish</h2>
         <p class="body">May this festival of lights fill your home with warmth, your heart with happiness, and your days with beautiful moments shared with the people you love.</p>
+        <p class="body">Thank you for being a part of our journey and for sharing this celebration with us. ❤️</p>
         <p class="sign-off">Happy Deepavali 🪔</p>
       </div>
     </section>
 
     <div class="rule"></div>
 
-    <section class="leaf" id="thanks">
-      <div class="reveal">
-        <h2>Thank You ❤️</h2>
-        <p class="body">Thank you for being a part of our journey and for sharing this special celebration with us.</p>
-        <p class="sign-off">Wishing you and your family a very Happy Deepavali.</p>
-      </div>
-    </section>
-
-    <div class="rule"></div>
-
-    <section class="leaf" id="signature">
+    <section class="leaf" id="contact">
       <div class="reveal">
         <p class="sig-name">Vaiga Sweets &amp; Snacks</p>
         <p class="sig-since">SINCE 2020</p>
-        <p class="sig-line">Serving sweetness with care since 2020.</p>
-      </div>
-    </section>
-
-    <section class="leaf" id="contact">
-      <div class="reveal">
-        <h2>Find Us</h2>
         <div class="c-stack">
           <div class="c-item">
             <span class="c-label">OUR LOCATION</span>
@@ -659,6 +670,10 @@ html{scroll-behavior:smooth}
           <div class="c-item">
             <span class="c-label">CALL US</span>
             <span class="c-value"><a href="tel:+917012525750">70125 25750</a></span>
+          </div>
+          <div class="c-item">
+            <span class="c-label">FOLLOW US ON INSTAGRAM</span>
+            <span class="c-value"><a href="https://www.instagram.com/vaigasweetsandsnacka" target="_blank" rel="noopener">@vaigasweetsandsnacka</a></span>
           </div>
           <a class="maps" href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
         </div>
@@ -681,43 +696,7 @@ html{scroll-behavior:smooth}
       </div>
     </section>
 
-    <section id="closing">
-      <div class="reveal">
-        <div class="close-lamp">
-          <div class="close-halo" aria-hidden="true"></div>
-          <svg viewBox="0 0 200 170" aria-hidden="true">
-            <g class="flame">
-              <ellipse cx="100" cy="62" rx="42" ry="50" fill="url(#flameHalo)"/>
-              <g class="flame-inner" style="transform-origin:100px 88px">
-                <path d="M100 22c13 22 19 36 19 47 0 13-8 21-19 21s-19-8-19-21c0-11 6-25 19-47Z" fill="url(#flameG)"/>
-                <path d="M100 46c6.5 13 9.5 20 9.5 26 0 7.5-4 11.5-9.5 11.5s-9.5-4-9.5-11.5c0-6 3-13 9.5-26Z" fill="#fff8ea" opacity=".92"/>
-              </g>
-            </g>
-            <path d="M97.5 96c0-6 1-11 2.5-14 1.5 3 2.5 8 2.5 14Z" fill="#4a2c18"/>
-            <g class="vessel">
-              <path d="M26 95c0 34 26 57 74 57s74-23 74-57Z" fill="url(#brass)"/>
-              <ellipse cx="100" cy="95" rx="74" ry="14" fill="url(#rim)"/>
-              <ellipse cx="100" cy="96" rx="65" ry="10" fill="#3a1f10"/>
-              <path d="M74 152h52c-3 6-12 9-26 9s-23-3-26-9Z" fill="#5a3418"/>
-            </g>
-          </svg>
-        </div>
-
-        <p class="close-wish">Happy Deepavali</p>
-
-        <p class="sig-name close-sig">Vaiga Sweets &amp; Snacks</p>
-        <p class="sig-since">SINCE 2020</p>
-
-        <p class="close-line">May your year be filled with light, happiness and beautiful moments.</p>
-
-        <div class="close-contact">
-          <span>📍 Lekshmi Nivas, T D Nagar 1, Kollam</span>
-          <span>📞 <a href="tel:+917012525750">70125 25750</a></span>
-          <a href="https://maps.app.goo.gl/fLZevv5v9UzZQucq6" target="_blank" rel="noopener">🗺️ View on Google Maps</a>
-        </div>
-      </div>
-      <footer>Made with ❤️ for the festival of lights.</footer>
-    </section>
+    <footer>Made with ❤️ for the festival of lights.</footer>
   </div>
 </div>
 
@@ -742,7 +721,7 @@ html{scroll-behavior:smooth}
     try{
       var AC = window.AudioContext || window.webkitAudioContext;
       if(!AC) return;
-      var ctx = new AC();
+      var ctx = actx = new AC();
       [880, 1318.5].forEach(function(freq, i){
         var osc = ctx.createOscillator();
         var gain = ctx.createGain();
@@ -756,7 +735,7 @@ html{scroll-behavior:smooth}
         osc.start(t);
         osc.stop(t + 1.9);
       });
-      setTimeout(function(){ ctx.close && ctx.close(); }, 2600);
+      setTimeout(function(){ try{ctx.close();}catch(e){} actx = null; }, 9000);
     }catch(e){ /* a missing chime is not worth surfacing */ }
   }
 
@@ -842,6 +821,93 @@ html{scroll-behavior:smooth}
     }
   }
 
+
+  /* ---------------------------------------------------------
+     Celebration: firecrackers + vivid colour wash (≈4.6s),
+     then the warm card settles and the scroll hint appears.
+     --------------------------------------------------------- */
+  var actx = null;
+  var SHOW = 4600;
+  var party = document.getElementById('party');
+  var cv = document.getElementById('fx');
+  var HUES = ['#7a1fd1','#d61f7e','#2a3cff','#00a3a3','#ff5a1f','#a000c8','#e0115f'];
+
+  function pop(vol){
+    if(!actx) return;
+    try{
+      var n = (actx.sampleRate * 0.25) | 0;
+      var buf = actx.createBuffer(1, n, actx.sampleRate), d = buf.getChannelData(0);
+      for(var i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / n, 3);
+      var src = actx.createBufferSource(); src.buffer = buf;
+      var f = actx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 900 + Math.random() * 1400;
+      var g = actx.createGain(); g.gain.value = vol;
+      src.connect(f); f.connect(g); g.connect(actx.destination); src.start();
+    }catch(e){}
+  }
+
+  function fireworks(){
+    if(calm || !cv || !cv.getContext) return;
+    var ctx = cv.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = window.innerWidth, H = window.innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cv.style.display = 'block';
+    var parts = [], t0 = performance.now(), ci = 0;
+
+    party.classList.add('on');
+    function tint(){ party.style.backgroundColor = HUES[ci++ % HUES.length]; }
+    tint();
+    var tinter = setInterval(tint, 700);
+
+    function burst(x, y, big){
+      var hue = Math.random() * 360, n = big ? 58 : 28;
+      for(var i = 0; i < n; i++){
+        var a = Math.PI * 2 * i / n + Math.random() * 0.2;
+        var v = (big ? 2.2 : 1.4) + Math.random() * (big ? 3.2 : 1.8);
+        parts.push({x:x, y:y, vx:Math.cos(a) * v, vy:Math.sin(a) * v, life:1,
+          dec:0.011 + Math.random() * 0.012,
+          c:'hsl(' + (hue + Math.random() * 50) + ',100%,' + (62 + Math.random() * 14) + '%)'});
+      }
+      pop(big ? 0.22 : 0.12);
+    }
+    /* [delay ms, x, y, big] */
+    [[0,.5,.3,1],[300,.2,.28,0],[550,.8,.26,0],[900,.5,.18,1],[1250,.28,.42,1],[1550,.74,.4,1],
+     [1900,.12,.2,0],[2200,.55,.3,1],[2550,.88,.22,0],[2900,.38,.22,1],[3300,.66,.16,1],[3700,.5,.34,1],[4100,.3,.3,0],[4300,.7,.3,0]
+    ].forEach(function(p){ setTimeout(function(){ burst(p[1] * W, p[2] * H, p[3]); }, p[0]); });
+
+    function frame(now){
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0,0,0,.22)'; ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+      for(var i = parts.length - 1; i >= 0; i--){
+        var p = parts[i];
+        p.vy += 0.035; p.vx *= 0.985; p.vy *= 0.985; p.x += p.vx; p.y += p.vy; p.life -= p.dec;
+        if(p.life <= 0){ parts.splice(i, 1); continue; }
+        ctx.globalAlpha = p.life; ctx.fillStyle = p.c;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2.2, 0, 6.283); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      if(now - t0 < SHOW + 1200 || parts.length) requestAnimationFrame(frame);
+      else { ctx.clearRect(0, 0, W, H); cv.style.display = 'none'; }
+    }
+    requestAnimationFrame(frame);
+
+    /* colours melt away, leaving the warm card underneath */
+    setTimeout(function(){
+      clearInterval(tinter);
+      party.style.transition = 'opacity 1.8s ease';
+      party.classList.remove('on');
+    }, SHOW);
+  }
+
+  var hint = document.getElementById('hint');
+  hint.addEventListener('click', function(){
+    document.getElementById('wish').scrollIntoView({behavior:'smooth'});
+  });
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 60) hint.classList.add('gone');
+  }, {passive:true});
+
   /* ---------------------------------------------------------
      THE MOMENT
      --------------------------------------------------------- */
@@ -858,13 +924,15 @@ html{scroll-behavior:smooth}
     chime();
     startMusic();
     motes();
+    fireworks();
 
     /* unseal the rest of the card once the flame has settled */
     setTimeout(function(){
       root.classList.remove('sealed');
+      root.classList.add('ready');
       scrollBody.removeAttribute('aria-hidden');
       watchLeaves();
-    }, calm ? 200 : 2200);
+    }, calm ? 200 : SHOW + 200);
   }
 
   /* the lamp is the only door into this moment */

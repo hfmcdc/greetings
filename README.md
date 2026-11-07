@@ -23,14 +23,16 @@ The rest of the page exists in the DOM but the document is scroll-locked
 (`html.sealed`) and hidden from screen readers, so there is nothing to
 scroll past and nothing to skim ahead to.
 
-**Lit** — the tap triggers, in one moment: flame ignition, a halo
-expanding outward, the background warming from near-black to burgundy and
-amber, slow light rays, floating motes, a soft synthesised chime, and
-`audio.play()`. Roughly 1.5s later the greeting fades into the same slot
-the invitation occupied, then the scroll unlocks and a cue appears.
+**Lit** — the tap triggers, in one moment: flame ignition, a soft chime,
+the music, and a ~4.6s celebration: firecrackers pop across the screen
+(canvas fireworks with synthesised crackle sounds) while the whole screen
+washes through vivid colours (violet, magenta, blue, teal, orange). The
+colours then melt away into the warm burgundy/amber card, the greeting is
+already showing, the page unlocks, and a clear "Scroll down to read your
+wishes" button with animated arrows appears (tap it or just scroll).
 
-The flame stays the light source for everything below it — the fixed warm
-gradient is anchored to where the lamp was.
+The card below is short: one wish + thank-you, one contact block, one share
+button, footer. About two and a half screens in total.
 
 ## Audio behaviour
 
@@ -53,6 +55,7 @@ rights for commercial use.
 
 - Address: Lekshmi Nivas, T D Nagar 1, Kollam
 - Phone: 70125 25750 (tap to call)
+- Instagram: @vaigasweetsandsnacka
 - Google Maps: https://maps.app.goo.gl/fLZevv5v9UzZQucq6
 
 ## Deploy on Vercel
@@ -65,8 +68,8 @@ rights for commercial use.
 ## Notes
 
 - Mobile-first; tested layout from 360px up. No horizontal scroll.
-- `prefers-reduced-motion` drops motes, rays and flicker, and unseals
-  the page immediately on tap.
+- `prefers-reduced-motion` skips the fireworks and colour flashing, drops
+  motes, rays and flicker, and unseals the page immediately on tap.
 - The lamp is a real `<button>` with an aria-label, so it works from the
   keyboard. Music control exposes `aria-pressed`.
 - The warm palette is deliberately fixed — a system light-mode setting
